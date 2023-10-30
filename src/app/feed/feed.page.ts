@@ -10,11 +10,14 @@ export class FeedPage implements OnInit {
   data: any
   sampleData : any
 
-  constructor(private router: Router) { }
-
-  ngOnInit() {
+  constructor(private router: Router) { 
     this.sample()
   }
+
+  ngOnInit() {
+   
+  }
+  
 
   sample() {
 
@@ -43,8 +46,13 @@ export class FeedPage implements OnInit {
 
       ]
     }
-
-    this.sampleData = this.data.sample
+   const storage =  localStorage.getItem('data')
+   
+    if(storage){
+      this.sampleData = JSON.parse(storage)
+    }else{
+      this.sampleData = this.data.sample
+    }
   }
 
   edit(i:any, data:any){
